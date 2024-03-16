@@ -41,21 +41,22 @@ jobs:
             export PORT=${PORT}
             export HOST=${HOST}
             cd /srv/funds-ci
+            git pull
             docker-compose pull backend
             docker-compose up -d backend
-          env:
-            DATABASE_CLIENT=${{ vars.DATABASE_CLIENT || 'mysql' }}
-            DATABASE_URL=${{ vars.DATABASE_URL }}
-            DATABASE_HOST=${{ vars.DATABASE_HOST }}
-            DATABASE_PORT=${{ vars.DATABASE_PORT || 3306 }}
-            DATABASE_NAME=${{ vars.DATABASE_NAME }}
-            DATABASE_USERNAME=${{ vars.DATABASE_USERNAME }}
-            DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}
-            SERVER_PORT=${{ vars.SERVER_PORT }}
-            JWT_SECRET=${{ secrets.JWT_SECRET }}
-            TRANSFER_TOKEN_SALT=${{ vars.TRANSFER_TOKEN_SALT }}
-            ADMIN_JWT_SECRET=${{ secrets.ADMIN_JWT_SECRET }}
-            API_TOKEN_SALT=${{ vars.API_TOKEN_SALT }}
-            APP_KEYS=${{ vars.APP_KEYS }}
-            PORT=${{ vars.PORT || 1337 }}
-            HOST=${{ vars.HOST || '0.0.0.0' }}
+        env:
+          DATABASE_CLIENT=${{ vars.DATABASE_CLIENT || 'mysql' }}
+          DATABASE_URL=${{ vars.DATABASE_URL }}
+          DATABASE_HOST=${{ vars.DATABASE_HOST }}
+          DATABASE_PORT=${{ vars.DATABASE_PORT || 3306 }}
+          DATABASE_NAME=${{ vars.DATABASE_NAME }}
+          DATABASE_USERNAME=${{ vars.DATABASE_USERNAME }}
+          DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}
+          SERVER_PORT=${{ vars.SERVER_PORT }}
+          JWT_SECRET=${{ secrets.JWT_SECRET }}
+          TRANSFER_TOKEN_SALT=${{ vars.TRANSFER_TOKEN_SALT }}
+          ADMIN_JWT_SECRET=${{ secrets.ADMIN_JWT_SECRET }}
+          API_TOKEN_SALT=${{ vars.API_TOKEN_SALT }}
+          APP_KEYS=${{ vars.APP_KEYS }}
+          PORT=${{ vars.PORT || 1337 }}
+          HOST=${{ vars.HOST || '0.0.0.0' }}
