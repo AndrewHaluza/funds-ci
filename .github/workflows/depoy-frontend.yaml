@@ -46,7 +46,6 @@ jobs:
           private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ vars.SSH_PORT }}
           commands: |          
-            export SERVER_URL='${{ vars.SERVER_URL }}'
 
             cd /srv/funds-ci
             git pull
