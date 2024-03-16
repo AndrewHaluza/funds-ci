@@ -1,6 +1,4 @@
 version: "3"
-x-custom:
-  name: funds
 services:
   backend:
     container_name: backend
