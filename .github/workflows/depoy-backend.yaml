@@ -14,7 +14,7 @@ jobs:
           repository: ${{ vars.BACKEND_REPO }}
           token: ${{ secrets.BACKEND_REPO_PAT }}
           ref: 'staging'
-          path: 'backend'
+          path: ./
 
       - name: Login to Docker Registry
         uses: docker/login-action@v3
@@ -27,7 +27,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          context: ./backend
           tags: ${{ vars.DOCKER_REGISTRY_URL }}/funds-backend:latest
 
       - name: Execute remote SSH cloudflared tunnel commands (rebuild)
