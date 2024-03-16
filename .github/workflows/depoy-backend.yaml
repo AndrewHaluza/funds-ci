@@ -38,6 +38,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Create env file
+        run: |
+          printenv | grep SECRET_ > .env
+          ls -la
+
       - name: Execute remote SSH cloudflared tunnel commands (rebuild)
         uses: npgy/cloudflared-ssh-action@v2.0
         with:    
