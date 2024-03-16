@@ -29,21 +29,21 @@ jobs:
           private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ vars.SSH_PORT }}
           commands: |
-            export DATABASE_CLIENT=${{ vars.DATABASE_CLIENT }}
-            export DATABASE_URL=${{ vars.DATABASE_URL }}
-            export DATABASE_HOST=${{ vars.DATABASE_HOST }}
-            export DATABASE_PORT=${{ vars.DATABASE_PORT }}
-            export DATABASE_NAME=${{ vars.DATABASE_NAME }}
-            export DATABASE_USERNAME=${{ vars.DATABASE_USERNAME }}
-            export SERVER_PORT=${{ vars.SERVER_PORT }}
-            export TRANSFER_TOKEN_SALT=${{ vars.TRANSFER_TOKEN_SALT }}
-            export API_TOKEN_SALT=${{ vars.API_TOKEN_SALT }}
-            export APP_KEYS=${{ vars.APP_KEYS }}
-            export PORT=${{ vars.PORT }}
-            export HOST=${{ vars.HOST }}
-            export DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}
-            export JWT_SECRET=${{ secrets.JWT_SECRET }}
-            export ADMIN_JWT_SECRET=${{ secrets.ADMIN_JWT_SECRET }}
+            export DATABASE_CLIENT='${{ vars.DATABASE_CLIENT }}'
+            export DATABASE_URL='${{ vars.DATABASE_URL }}'
+            export DATABASE_HOST='${{ vars.DATABASE_HOST }}'
+            export DATABASE_PORT='${{ vars.DATABASE_PORT }}'
+            export DATABASE_NAME='${{ vars.DATABASE_NAME }}'
+            export DATABASE_USERNAME='${{ vars.DATABASE_USERNAME }}'
+            export SERVER_PORT='${{ vars.SERVER_PORT }}'
+            export TRANSFER_TOKEN_SALT='${{ vars.TRANSFER_TOKEN_SALT }}'
+            export API_TOKEN_SALT='${{ vars.API_TOKEN_SALT }}'
+            export APP_KEYS='${{ vars.APP_KEYS }}'
+            export PORT='${{ vars.PORT }}'
+            export HOST='${{ vars.HOST }}'
+            export DATABASE_PASSWORD='${{ secrets.DATABASE_PASSWORD }}'
+            export JWT_SECRET='${{ secrets.JWT_SECRET }}'
+            export ADMIN_JWT_SECRET='${{ secrets.ADMIN_JWT_SECRET }}'
 
             echo 'DB:'
             echo $DATABASE_NAME
