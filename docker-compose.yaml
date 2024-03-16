@@ -28,7 +28,7 @@ services:
     container_name: frontend
     image: registry.ndtech.cloud/funds-frontend:latest
     restart: always
-    entrypoint:
+    environment:
       - SERVER_URL=${SERVER_URL}
     ports:
       - "3000:3000"
