@@ -33,9 +33,7 @@ jobs:
             echo ${{ vars.DATABASE_URL }}
             echo '${ vars.DATABASE_URL }'
             echo '${{ vars.DATABASE_URL }}'
-            echo ${{ DATABASE_URL }}
-            echo '${ DATABASE_URL }'
-            echo '${{ DATABASE_URL }}'
+
 
             export DATABASE_CLIENT=${{ vars.DATABASE_URL }}
             export DATABASE_URL=${DATABASE_URL}
