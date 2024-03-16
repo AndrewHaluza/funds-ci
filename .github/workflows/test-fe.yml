@@ -16,15 +16,12 @@ jobs:
     steps:
       - name: Execute remote SSH cloudflared tunnel commands (rebuild)
         uses: npgy/cloudflared-ssh-action@v2.0
-        env:
-          SERVER_URL: ${{ secrets.SERVER_URL }}
         with:    
           host: ${{ vars.SSH_IP }}
           username: ${{ vars.SSH_USERNAME }}
           private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ vars.SSH_PORT }}
           commands: |          
-
             cd /srv/funds-ci
             git pull
             docker-compose pull frontend
