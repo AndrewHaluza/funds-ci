@@ -29,11 +29,17 @@ jobs:
           private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ vars.SSH_PORT }}
           commands: |
-            echo ${{ vars.DATABASE_CLIENT || 'mysql' }}
-            echo '${{ vars.DATABASE_CLIENT || 'mysql' }}'
-            echo ${ vars.DATABASE_CLIENT || 'mysql' }
-            echo '${ vars.DATABASE_CLIENT || 'mysql' }'
-            export DATABASE_CLIENT=${{ vars.DATABASE_CLIENT || 'mysql' }}
+            echo ${ vars.DATABASE_URL }
+            echo ${{ vars.DATABASE_URL }}
+            echo '${ vars.DATABASE_URL }'
+            echo '${{ vars.DATABASE_URL }}'
+    
+            echo ${ DATABASE_URL }
+            echo ${{ DATABASE_URL }}
+            echo '${ DATABASE_URL }'
+            echo '${{ DATABASE_URL }}'
+
+            export DATABASE_CLIENT=${{ vars.DATABASE_URL }}
             export DATABASE_URL=${DATABASE_URL}
             export DATABASE_HOST=${DATABASE_HOST}
             export DATABASE_PORT=${DATABASE_PORT}
