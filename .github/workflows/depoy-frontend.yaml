@@ -1,6 +1,8 @@
 name: Deploy frontend
 
 on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
   repository_dispatch:
     types: deploy-frontend
 
