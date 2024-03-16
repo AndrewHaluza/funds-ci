@@ -1,4 +1,5 @@
 name: Deploy frontend
+run-name: Deploy frontend
 
 on:
   # Allows you to run this workflow manually from the Actions tab
@@ -7,7 +8,8 @@ on:
     types: deploy-frontend
 
 jobs:
-  deploy:
+  push_image:
+    name: Push docker image to registry
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -31,6 +33,11 @@ jobs:
           push: true
           tags: ${{ vars.DOCKER_REGISTRY_URL }}/funds-frontend:latest
 
+  deploy_image:
+    name: Deploy docker image to server
+    runs-on: ubuntu-latest
+    needs: push_image
+    steps:
       - name: Execute remote SSH cloudflared tunnel commands (rebuild)
         uses: npgy/cloudflared-ssh-action@v2.0
         with:    
