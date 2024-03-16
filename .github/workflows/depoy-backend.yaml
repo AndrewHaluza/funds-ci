@@ -38,11 +38,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Create env file
-        run: |
-          printenv | grep SECRET_ > .env
-          ls -la
-
       - name: Execute remote SSH cloudflared tunnel commands (rebuild)
         uses: npgy/cloudflared-ssh-action@v2.0
         with:    
@@ -53,4 +48,19 @@ jobs:
           commands: |
             cd /srv/funds-ci
             docker-compose pull backend
+            DATABASE_CLIENT=${{DATABASE_CLIENT:-mysql}}
+            DATABASE_URL=${{DATABASE_URL}}
+            DATABASE_HOST=${{DATABASE_HOST}}
+            DATABASE_PORT=${{DATABASE_PORT:-3306}}
+            DATABASE_NAME=${{DATABASE_NAME}}
+            DATABASE_USERNAME=${{DATABASE_USERNAME}}
+            DATABASE_PASSWORD=${{DATABASE_PASSWORD}}
+            SERVER_PORT=${{SERVER_PORT}}
+            JWT_SECRET=${{JWT_SECRET}}
+            TRANSFER_TOKEN_SALT=${{TRANSFER_TOKEN_SALT}}
+            ADMIN_JWT_SECRET=${{ADMIN_JWT_SECRET}}
+            API_TOKEN_SALT=${{API_TOKEN_SALT}}
+            APP_KEYS=${{APP_KEYS}}
+            PORT=${{PORT:-1337}}
+            HOST=${{HOST:-0.0.0.0}}
             docker-compose up -d backend
