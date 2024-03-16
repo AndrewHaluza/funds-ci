@@ -24,16 +24,16 @@ services:
       - APP_KEYS=${APP_KEYS}
       - PORT=${PORT:-1337}
       - HOST=${HOST:-0.0.0.0}
-  frontend:
-    container_name: frontend
-    image: registry.ndtech.cloud/funds-frontend:latest
-    restart: always
-    entrypoint:
-      - SERVER_URL=${SERVER_URL}
-    ports:
-      - "3000:3000"
-    volumes:
-      - frontend_vol:/app/frontend
+  # frontend:
+  #   container_name: frontend
+  #   image: registry.ndtech.cloud/funds-frontend:latest
+  #   restart: always
+  #   entrypoint:
+  #     - SERVER_URL=${SERVER_URL}
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - frontend_vol:/app/frontend
 volumes:
   backend_vol:
   frontend_vol:
