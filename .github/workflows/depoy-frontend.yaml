@@ -29,6 +29,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
+          args: 
+            SERVER_URL=${{ vars.SERVER_URL }}
           context: .
           push: true
           tags: ${{ vars.DOCKER_REGISTRY_URL }}/funds-frontend:latest
@@ -40,14 +42,13 @@ jobs:
     steps:
       - name: Execute remote SSH cloudflared tunnel commands (rebuild)
         uses: npgy/cloudflared-ssh-action@v2.0
-        env:
-          SERVER_URL: ${{ secrets.SERVER_URL }}
         with:    
           host: ${{ vars.SSH_IP }}
           username: ${{ vars.SSH_USERNAME }}
           private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ vars.SSH_PORT }}
           commands: |          
+            export SERVER_URL='${{ vars.SERVER_URL }}'
 
             cd /srv/funds-ci
             git pull
