@@ -29,10 +29,8 @@ jobs:
           private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ vars.SSH_PORT }}
           commands: |
-            echo ${ vars.DATABASE_URL }
             echo ${{ vars.DATABASE_URL }}
-            echo '${ vars.DATABASE_URL }'
-            echo '${{ vars.DATABASE_URL }}'
+         
 
 
             export DATABASE_CLIENT=${{ vars.DATABASE_URL }}
