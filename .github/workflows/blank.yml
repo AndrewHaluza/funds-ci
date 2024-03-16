@@ -33,8 +33,6 @@ jobs:
             echo ${{ vars.DATABASE_URL }}
             echo '${ vars.DATABASE_URL }'
             echo '${{ vars.DATABASE_URL }}'
-    
-            echo ${ DATABASE_URL }
             echo ${{ DATABASE_URL }}
             echo '${ DATABASE_URL }'
             echo '${{ DATABASE_URL }}'
