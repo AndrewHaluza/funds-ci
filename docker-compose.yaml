@@ -1,5 +1,6 @@
 version: "3"
-name: funds
+x-custom:
+  name: funds
 services:
   backend:
     container_name: backend
@@ -29,9 +30,8 @@ services:
     container_name: frontend
     image: registry.ndtech.cloud/funds-frontend:latest
     restart: always
-    build:
-      args:
-        - SERVER_URL=${SERVER_URL}
+    entrypoint:
+          - SERVER_URL=${SERVER_URL}
     ports:
       - "3000:3000"
     volumes:
