@@ -40,6 +40,8 @@ jobs:
     steps:
       - name: Execute remote SSH cloudflared tunnel commands (rebuild)
         uses: npgy/cloudflared-ssh-action@v2.0
+        env:
+          SERVER_URL: ${{ secrets.SERVER_URL }}
         with:    
           host: ${{ vars.SSH_IP }}
           username: ${{ vars.SSH_USERNAME }}
