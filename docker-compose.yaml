@@ -1,0 +1,27 @@
+version: "3"
+name: funds
+services:
+  backend:
+    container_name: backend
+    image: registry.ndtech.cloud/funds-backend:latest
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "1337:1337"
+    volumes:
+      - backend_vol:/app/backend
+  frontend:
+    container_name: frontend
+    image: registry.ndtech.cloud/funds-frontend:latest
+    restart: always
+    build:
+      args:
+        - SERVER_URL=${SERVER_URL}
+    ports:
+      - "3000:3000"
+    volumes:
+      - frontend_vol:/app/frontend
+volumes:
+  backend_vol:
+  frontend_vol:
