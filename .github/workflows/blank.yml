@@ -42,5 +42,6 @@ jobs:
             export PORT=${PORT}
             export HOST=${HOST}
             cd /srv/funds-ci
+            git pull
             docker-compose pull backend
             docker-compose up -d backend
