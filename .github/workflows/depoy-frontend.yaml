@@ -29,10 +29,11 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          args: 
+          build-args: 
             SERVER_URL=${{ vars.SERVER_URL }}
           context: .
           push: true
+
           tags: ${{ vars.DOCKER_REGISTRY_URL }}/funds-frontend:latest
 
   deploy_image:
