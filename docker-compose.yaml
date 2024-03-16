@@ -29,7 +29,7 @@ services:
     image: registry.ndtech.cloud/funds-frontend:latest
     restart: always
     entrypoint:
-          - SERVER_URL=${SERVER_URL}
+      - SERVER_URL=${SERVER_URL}
     ports:
       - "3000:3000"
     volumes:
