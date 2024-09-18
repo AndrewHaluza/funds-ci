@@ -1,0 +1,43 @@
+services:
+  backend:
+    container_name: backend
+    build:
+      context: ../funds-backend
+    restart: always
+    ports:
+      - "1337:1337"
+    volumes:
+      - backend_vol:/app/backend
+    environment:
+      - DATABASE_CLIENT=${DATABASE_CLIENT:-sqlite}
+      - DATABASE_FILENAME=./data.db
+#      - DATABASE_URL=${DATABASE_URL}
+#      - DATABASE_HOST=${DATABASE_HOST}
+#      - DATABASE_PORT=${DATABASE_PORT:-3306}
+#      - DATABASE_NAME=${DATABASE_NAME}
+#      - DATABASE_USERNAME=${DATABASE_USERNAME}
+#      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - SERVER_PORT=${SERVER_PORT:-1337}
+      - JWT_SECRET=1ewfjkfwej891234hui234hebuwrfujgf7823hjkjehfsdfsdjksdfj
+      - TRANSFER_TOKEN_SALT=sdfkljsk7823nnnjnjjdjdsfh8723ikasdfy7sdfsjdffsdjksdfh
+      - ADMIN_JWT_SECRET=9990890890j8i9jijiojiojiojiodsf6e4kvnvgb[pa[]2
+      - API_TOKEN_SALT=sdfk0923mkmkmkklcxzu8ihwedkl;sjjkvgjh
+      - APP_KEYS=${APP_KEYS:-'+g1RxvEhgOKqBx5POyqVkA\=\=,p+8AJHKCPoVBgtcZUSS7BA\=\=,VltSvXKPKjwD72DIrH+bXw==,KDuR3aMrQNVno4ATP5C7rA=='}
+      - PORT=${PORT:-1337}
+      - HOST=${HOST:-localhost}
+  frontend:
+    container_name: frontend
+    build:
+      context: ../donatello
+      args:
+        - SERVER_URL=${SERVER_URL:-https://api.uafunds.org}
+    restart: always
+    environment:
+      - SERVER_URL=${SERVER_URL:-https://api.uafunds.org}
+    ports:
+      - "3007:3000"
+    volumes:
+      - frontend_vol:/app/frontend
+volumes:
+  backend_vol:
+  frontend_vol:
